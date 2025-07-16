@@ -1,0 +1,163 @@
+/* Macaron pastel color palette */
+:root {
+    --mac-pink:   #FFB3BA;
+    --mac-yellow: #FFFFBA;
+    --mac-green:  #BAFFC9;
+    --mac-blue:   #BAE1FF;
+    --mac-lav:    #E0BBE4;
+    --text:       #333;
+    --bg:         #fff;
+    --red: #ff0000;
+  }
+  
+  /* Global resets & smooth transitions */
+  * {
+    box-sizing: border-box;
+    transition: all .2s ease;
+  }
+  body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    background: var(--mac-blue) url('/static/img/pattern.svg') center/cover;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Headings */
+  h1 {
+    color: var(--bg);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+    margin-bottom: 1rem;
+  }
+  
+  /* Buttons */
+  button, .btn {
+    background: var(--mac-yellow);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  button:hover, .btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: var(--mac-pink);
+    color: #fff;
+  }
+  button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  /* ——— Delete button ——— */
+button.btn-delete {
+  background: var(--mac-yellow);
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+button.btn-delete:hover {
+  transform: translateY(-2px) scale(1.02);
+    background: var(--red);
+    color: #fff;
+}
+
+  
+  /* Styled link-buttons */
+  a.btn {
+    display: inline-block;
+    text-decoration: none;
+    margin: .5em 0;
+  }
+  
+  /* File input */
+  input[type="file"] {
+    padding: .5em;
+    border: 2px dashed var(--mac-lav);
+    border-radius: 6px;
+  }
+  input[type="file"]:hover {
+    border-color: var(--mac-pink);
+  }
+  
+  /* Table (history) */
+  table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  thead {
+    background: var(--mac-yellow);
+    color: var(--text);
+  }
+  th, td {
+    padding: .75em 1em;
+    text-align: left;
+  }
+  tbody tr:nth-child(odd) {
+    background: var(--mac-green);
+  }
+  tbody tr:hover {
+    background: var(--mac-pink);
+    color: #fff;
+  }
+  
+  /* Video & images */
+  #video {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 1em 0;
+  }
+  img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 1em 0;
+  }
+  /* constrain result image */
+  img.result-img {
+    max-width: 400px;
+    width: 100%;
+    display: block;
+    margin: 1em auto;
+  }
+  
+  /* Notification badge */
+  #notification-btn {
+    background: var(--mac-pink) !important;
+    color: #fff !important;
+  }
+  
+  /* Footer navigation */
+  .page-nav {
+    margin-top: 1.5rem;
+  }
+  .page-nav a {
+    margin: 0 .5rem;
+    text-decoration: none;
+    color: var(--mac-lav);
+    font-weight: bold;
+  }
+  .page-nav a:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: var(--mac-lav);
+    color: #fff;
+  }
+  

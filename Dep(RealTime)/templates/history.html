@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detection History</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      body {
+        background-color: #333333 !important;
+        color: #f0f0f0;
+      }
+      h1 {
+        color: #ffd700 !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      }
+      .card {
+        background-color: #444444;
+        border-color: #555555;
+      }
+      .table {
+        color: #f0f0f0;
+      }
+      .table-hover tbody tr:hover {
+        background-color: #555555;
+        color: #ffffff;
+      }
+      .table-light {
+        background-color: #555555;
+        color: #f0f0f0;
+      }
+      .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <h1 class="text-center mb-4">Past Detections</h1>
+
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>#</th>
+                      <th>Filename</th>
+                      <th>Verdict</th>
+                      <th>Timestamp</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for r in records %}
+                      <tr>
+                        <td>{{ r.id }}</td>
+                        <td>
+                          <a href="{{ url_for('uploaded_file', filename=r.filename) }}">
+                            {{ r.filename }}
+                          </a>
+                        </td>
+                        <td>
+                          <span class="badge {% if r.verdict == 'AI-generated' %}bg-danger{% else %}bg-success{% endif %}">
+                            {{ r.verdict }}
+                          </span>
+                        </td>
+                        <td>{{ r.timestamp }}</td>
+                        <td>
+                          <form method="POST"
+                                action="{{ url_for('delete', rec_id=r.id) }}"
+                                onsubmit="return confirm('Delete this record?');"
+                                class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center gap-2">
+            <a class="btn btn-primary" href="{{ url_for('upload') }}">📤 Upload more</a>
+            <a class="btn btn-outline-primary" href="{{ url_for('camera') }}">▶ Real-time Detection</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
